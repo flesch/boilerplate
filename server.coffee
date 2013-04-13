@@ -9,7 +9,6 @@ configuration = require "node-yaml-config"
 {version} = require "./package.json"
 
 app = express()
-server = require("http").createServer(app)
 config = configuration.load "config.yaml", process.env.ENVIRONMENT or "development"
 
 app.get "/", (req, res, next) ->
@@ -36,6 +35,6 @@ app.configure(() ->
   app.set "views", "#{__dirname}/views"
 )
 
-server.listen config.server.port, ->
-  addr = server.address()
-  console.log "⚡ app listening on http://%s:%s/", addr.address, addr.port
+app.listen process.env.PORT or config.server.port, ->
+  console.log "⚡ app listening on port %s", process.env.PORT or config.server.port
+  
