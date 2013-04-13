@@ -1,5 +1,7 @@
 default:
   server:
     port: 3000
+  session:
+    secret: 1aca076b75e9b141c111936833c7c3d0b06d7f9a
 development:
 production:

@@ -8,8 +8,9 @@ _ = require "underscore"
 configuration = require "node-yaml-config"
 {version} = require "./package.json"
 
+config = configuration.load "config.yaml", process.env.ENVIRONMENT
+
 app = express()
-config = configuration.load "config.yaml", process.env.ENVIRONMENT or "development"
 
 app.get "/", (req, res, next) ->
   res.render "index.html", css:app.get("css"), js:app.get("js"), version:version
@@ -27,7 +28,7 @@ app.configure(() ->
   app.use express.cookieParser()
   app.use express.bodyParser()
   app.use express.cookieSession(
-    secret: "1aca076b75e9b141c111936833c7c3d0b06d7f9a"
+    secret: config.session.secret
     cookie: maxAge: 24 * 60 * 60 * 1000
     proxy: true
   )
@@ -37,4 +38,3 @@ app.configure(() ->
 
 app.listen process.env.PORT or config.server.port, ->
   console.log "⚡ app listening on port %s", process.env.PORT or config.server.port
-  
