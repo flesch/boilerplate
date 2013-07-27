@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     uglify: {
       all: {
         files: {
-          'public/js/application.min.js': ['src/js/jquery-1.10.2.js', 'src/js/bootstrap.js', 'src/js/application.js']
+          'public/js/application.js': ['src/js/jquery-1.10.2.js', 'src/js/bootstrap.js', 'src/js/application.js']
         }
       }
     },

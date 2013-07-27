@@ -2,11 +2,21 @@ var express = require("express")
   , consolidate = require("consolidate")
   , hogan = require("hogan.js")
   , _ = require("underscore")
+  , fs = require("fs")
+  , crypto = require("crypto")
   , configuration = require("node-yaml-config")
   , config = configuration.load("config.yaml", process.env.ENVIRONMENT)
   , packagejson = require("./package.json")
   , app = express()
   ;
+
+fs.readFile(__dirname + "/public/js/application.js", function(err, buffer){
+  app.set("md5js", crypto.createHash("md5").update(new Buffer(buffer).toString("utf-8")).digest("hex"));
+});
+
+fs.readFile(__dirname + "/public/css/application.css", function(err, buffer){
+  app.set("md5css", crypto.createHash("md5").update(new Buffer(buffer).toString("utf-8")).digest("hex"));
+});
 
 app.configure(function() {
   app.use(express.compress());
@@ -22,9 +32,10 @@ app.configure(function() {
 });
 
 app.get("/", function(req, res, next) {
-  res.render("index.html", { description:packagejson.description, author:packagejson.author, version:packagejson.version });
+  res.render("index.html", { description:packagejson.description, author:packagejson.author, version:packagejson.version, md5js:app.get("md5js"), md5css:app.get("md5css") });
 });
 
 app.listen(process.env.PORT || config.server.port, function() {
   console.log("⚡ app listening on port %s", process.env.PORT || config.server.port);
 });
+
