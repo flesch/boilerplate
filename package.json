@@ -27,6 +27,11 @@
     "underscore": "~1.4.4",
     "node-yaml-config": "0.0.1"
   },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-express-server": "~0.4.1"
+  },
   "engines": {
     "node": "0.10.4",
     "npm": "1.2.18"
