@@ -1,0 +1,12 @@
+body {
+  border-top: 5px solid #2a6496;  
+}
+
+.application {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
