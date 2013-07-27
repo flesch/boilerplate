@@ -22,7 +22,7 @@ app.configure(function() {
 });
 
 app.get("/", function(req, res, next) {
-  res.render("index.html", { version:packagejson.version });
+  res.render("index.html", { description:packagejson.description, author:packagejson.author, version:packagejson.version });
 });
 
 app.listen(process.env.PORT || config.server.port, function() {
