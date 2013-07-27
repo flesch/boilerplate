@@ -1,22 +1,22 @@
 {
-  "name": "flesch-express-boilerplate",
-  "version": "0.0.1",
+  "name": "flesch-boilerplate",
+  "version": "0.0.2",
   "description": "My Express.js Boilerplate",
   "keywords": [],
-  "homepage": "https://github.com/flesch/express-boilerplate/",
+  "homepage": "https://github.com/flesch/boilerplate/",
   "bugs": {
-    "url": "https://github.com/flesch/express-boilerplate/issues",
+    "url": "https://github.com/flesch/boilerplate/issues",
     "email": "john@fles.ch"
   },
   "author": "John Flesch <john@fles.ch> (http://fles.ch)",
   "contributors": [],
-  "main": "server.coffee",
+  "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flesch/express-boilerplate.git"
+    "url": "https://github.com/flesch/boilerplate.git"
   },
   "scripts": {
-    "start": "coffee server.coffee"
+    "start": "node server.js"
   },
   "dependencies": {
     "coffee-script": "~1.6.2",
